@@ -4,6 +4,8 @@ import { useId } from 'react';
 import css from './ContactForm.module.css';
 import * as yup from 'yup';
 import { ErrorMessage } from 'formik';
+import { useDispatch, useSelector } from 'react-redux';
+import { addContact } from '../redux/contactsSlice';
 
 function ContactForm({ onAdd }) {
   const contactNameFieldId = useId();
@@ -25,12 +27,17 @@ function ContactForm({ onAdd }) {
       .required('Must be filled in'),
   });
 
+  const dispatch = useDispatch();
+
   function handleSubmit(values, actions) {
-    onAdd({
-      id: Date.now(),
-      name: values.contactName,
-      number: values.phoneNumber,
-    });
+    dispatch(addContact(values.contactName, values.phoneNumber));
+    console.log(values.contactName, values.phoneNumber);
+
+    // onAdd({
+    //   id: Date.now(),
+    //   name: values.contactName,
+    //   number: values.phoneNumber,
+    // });
     actions.resetForm();
   }
   return (
