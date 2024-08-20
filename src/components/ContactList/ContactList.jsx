@@ -5,16 +5,15 @@ import css from './ContactList.module.css';
 
 function ContactList({ contacts, onDelete }) {
   const data = useSelector(state => state.contacts.items);
-  console.log(data);
 
   const filterValue = useSelector(state => state.filters.name);
-  // const sortedContacts = data.filter(contact =>
-  //   contact.name.toLowerCase().includes(filterValue.toLocaleLowerCase())
-  // );
+  const sortedContacts = data.filter(contact =>
+    contact.name.toLowerCase().includes(filterValue.toLocaleLowerCase())
+  );
 
   return (
     <ul className={css.ul}>
-      {data.map(contact => (
+      {sortedContacts.map(contact => (
         <li key={contact.id}>
           <Contact contact={contact} onDelete={onDelete} />
         </li>

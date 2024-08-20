@@ -17,10 +17,3 @@ export function deleteContact(contactId) {
     payload: contactId,
   };
 }
-
-export function setSearchValue(value) {
-  return {
-    type: 'filters/setSearchValue',
-    payload: value,
-  };
-}
