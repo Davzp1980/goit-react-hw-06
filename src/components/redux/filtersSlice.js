@@ -16,8 +16,15 @@ const filterSlice = createSlice({
       name: '',
     },
     reducers: {
-      setSearchValue(state, action) {
-        state.filters.name = action.payload;
+      setSearchValue: {
+        reducer(state, action) {
+          state.filters.name = action.payload;
+        },
+        prepare(value) {
+          return {
+            payload: value,
+          };
+        },
       },
     },
   },

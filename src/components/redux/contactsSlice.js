@@ -28,18 +28,21 @@ const contactsSlice = createSlice({
     },
   },
   reducers: {
-    addContact(state, action) {
-      state.contacts.items.push(action.payload);
+    addContact: {
+      reducer(state, action) {
+        state.contacts.items.push(action.payload);
+      },
+      prepare(name, number) {
+        return {
+          payload: {
+            id: nanoid(),
+            name,
+            number,
+          },
+        };
+      },
     },
-    prepare(name, number) {
-      return {
-        payload: {
-          id: nanoid(),
-          name,
-          number,
-        },
-      };
-    },
+
     deleteContact(state, action) {
       const index = state.contacts.items.findIndex(
         contact => contact.id === action.payload
