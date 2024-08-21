@@ -4,9 +4,9 @@ import Contact from '../Contact/Contact';
 import css from './ContactList.module.css';
 
 function ContactList({ onDelete }) {
-  const data = useSelector(state => state.contacts.contacts.items);
+  const data = useSelector(state => state.contacts.items);
 
-  const filterValue = useSelector(state => state.filters.filters.name);
+  const filterValue = useSelector(state => state.filters.name);
   const sortedContacts = data.filter(contact =>
     contact.name.toLowerCase().includes(filterValue.toLocaleLowerCase())
   );

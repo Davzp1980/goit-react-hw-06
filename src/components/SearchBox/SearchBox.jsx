@@ -1,6 +1,6 @@
 import { useId } from 'react';
 import css from './SearchBox.module.css';
-import { setSearchValue } from '../redux/filtersSlice';
+import { changeFilter } from '../../redux/filtersSlice';
 import { useDispatch } from 'react-redux';
 
 function SearchBox() {
@@ -9,7 +9,7 @@ function SearchBox() {
   const dispatch = useDispatch();
 
   function handleOnChange(e) {
-    dispatch(setSearchValue(e.target.value));
+    dispatch(changeFilter(e.target.value));
   }
 
   return (

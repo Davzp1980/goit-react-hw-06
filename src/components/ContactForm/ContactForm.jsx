@@ -5,8 +5,8 @@ import css from './ContactForm.module.css';
 import * as yup from 'yup';
 import { ErrorMessage } from 'formik';
 
-import { addContact } from '../redux/contactsSlice';
 import { useDispatch } from 'react-redux';
+import { addContact } from '../../redux/contactsSlice';
 
 function ContactForm() {
   const contactNameFieldId = useId();
