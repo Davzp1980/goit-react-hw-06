@@ -3,11 +3,11 @@ import { useSelector } from 'react-redux';
 import Contact from '../Contact/Contact';
 import css from './ContactList.module.css';
 
-function ContactList({ onDelete }) {
-  const data = useSelector(state => state.contacts.items);
+function ContactList() {
+  const contacts = useSelector(state => state.contacts.items);
 
   const filterValue = useSelector(state => state.filters.name);
-  const sortedContacts = data.filter(contact =>
+  const sortedContacts = contacts.filter(contact =>
     contact.name.toLowerCase().includes(filterValue.toLocaleLowerCase())
   );
 
@@ -15,7 +15,7 @@ function ContactList({ onDelete }) {
     <ul className={css.ul}>
       {sortedContacts.map(contact => (
         <li key={contact.id}>
-          <Contact contact={contact} onDelete={onDelete} />
+          <Contact contact={contact} />
         </li>
       ))}
     </ul>
