@@ -33,11 +33,6 @@ function ContactForm() {
   function handleSubmit(values, actions) {
     dispatch(addContact(values.contactName, values.phoneNumber));
 
-    // onAdd({
-    //   id: Date.now(),
-    //   name: values.contactName,
-    //   number: values.phoneNumber,
-    // });
     actions.resetForm();
   }
   return (
